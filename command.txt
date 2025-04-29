@@ -422,4 +422,227 @@
   422  ls -l
   423  git restore new.txt 
   424  ls -l
-  425  history
+
+  GNU bash, version 5.0.3(1)-release (x86_64-pc-linux-gnu)
+These shell commands are defined internally.  Type `help' to see this list.
+Type `help name' to find out more about the function `name'.
+Use `info bash' to find out more about the shell in general.
+Use `man -k' or `info' to find out more about commands not in this list.
+
+A star (*) next to a name means that the command is disabled.
+
+ job_spec [&]                                                                                             history [-c] [-d offset] [n] or history -anrw [filename] or history -ps arg [arg...]
+ (( expression ))                                                                                         if COMMANDS; then COMMANDS; [ elif COMMANDS; then COMMANDS; ]... [ else COMMANDS; ] fi
+ . filename [arguments]                                                                                   jobs [-lnprs] [jobspec ...] or jobs -x command [args]
+ :                                                                                                        kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sigspec]
+ [ arg... ]                                                                                               let arg [arg ...]
+ [[ expression ]]                                                                                         local [option] name[=value] ...
+ alias [-p] [name[=value] ... ]                                                                           logout [n]
+ bg [job_spec ...]                                                                                        mapfile [-d delim] [-n count] [-O origin] [-s count] [-t] [-u fd] [-C callback] [-c quantum] [array]
+ bind [-lpsvPSVX] [-m keymap] [-f filename] [-q name] [-u name] [-r keyseq] [-x keyseq:shell-command] [>  popd [-n] [+N | -N]
+ break [n]                                                                                                printf [-v var] format [arguments]
+ builtin [shell-builtin [arg ...]]                                                                        pushd [-n] [+N | -N | dir]
+ caller [expr]                                                                                            pwd [-LP]
+ case WORD in [PATTERN [| PATTERN]...) COMMANDS ;;]... esac                                               read [-ers] [-a array] [-d delim] [-i text] [-n nchars] [-N nchars] [-p prompt] [-t timeout] [-u fd] >
+ cd [-L|[-P [-e]] [-@]] [dir]                                                                             readarray [-d delim] [-n count] [-O origin] [-s count] [-t] [-u fd] [-C callback] [-c quantum] [array>
+ command [-pVv] command [arg ...]                                                                         readonly [-aAf] [name[=value] ...] or readonly -p
+ compgen [-abcdefgjksuv] [-o option] [-A action] [-G globpat] [-W wordlist]  [-F function] [-C command]>  return [n]
+ complete [-abcdefgjksuv] [-pr] [-DEI] [-o option] [-A action] [-G globpat] [-W wordlist]  [-F function>  select NAME [in WORDS ... ;] do COMMANDS; done
+ compopt [-o|+o option] [-DEI] [name ...]                                                                 set [-abefhkmnptuvxBCHP] [-o option-name] [--] [arg ...]
+ continue [n]                                                                                             shift [n]
+ coproc [NAME] command [redirections]                                                                     shopt [-pqsu] [-o] [optname ...]
+ declare [-aAfFgilnrtux] [-p] [name[=value] ...]                                                          source filename [arguments]
+ dirs [-clpv] [+N] [-N]                                                                                   suspend [-f]
+ disown [-h] [-ar] [jobspec ... | pid ...]                                                                test [expr]
+ echo [-neE] [arg ...]                                                                                    time [-p] pipeline
+ enable [-a] [-dnps] [-f filename] [name ...]                                                             times
+ eval [arg ...]                                                                                           trap [-lp] [[arg] signal_spec ...]
+ exec [-cl] [-a name] [command [arguments ...]] [redirection ...]                                         true
+ exit [n]                                                                                                 type [-afptP] name [name ...]
+ export [-fn] [name[=value] ...] or export -p                                                             typeset [-aAfFgilnrtux] [-p] name[=value] ...
+ false                                                                                                    ulimit [-SHabcdefiklmnpqrstuvxPT] [limit]
+ fc [-e ename] [-lnr] [first] [last] or fc -s [pat=rep] [command]                                         umask [-p] [-S] [mode]
+ fg [job_spec]                                                                                            unalias [-a] name [name ...]
+ for NAME [in WORDS ... ] ; do COMMANDS; done                                                             unset [-f] [-v] [-n] [name ...]
+ for (( exp1; exp2; exp3 )); do COMMANDS; done                                                            until COMMANDS; do COMMANDS; done
+ function name { COMMANDS ; } or name () { COMMANDS ; }                                                   variables - Names and meanings of some shell variables
+ getopts optstring name [arg]                                                                             wait [-fn] [id ...]
+ hash [-lr] [-p pathname] [-dt] [name ...]                                                                while COMMANDS; do COMMANDS; done
+ help [-dms] [pattern ...]                                                                                { COMMANDS ; }
+root@6830797b6be0:/app# 
+
+
+
+
+
+
+
+BASH(1)                                                                                    General Commands Manual                                                                                   BASH(1)
+
+NAME
+       bash - GNU Bourne-Again SHell
+
+SYNOPSIS
+       bash [options] [command_string | file]
+
+COPYRIGHT
+       Bash is Copyright (C) 1989-2022 by the Free Software Foundation, Inc.
+
+DESCRIPTION
+       Bash is an sh-compatible command language interpreter that executes commands read from the standard input or from a file.  Bash also incorporates useful features from the Korn and C shells (ksh and
+       csh).
+
+       Bash  is  intended to be a conformant implementation of the Shell and Utilities portion of the IEEE POSIX specification (IEEE Standard 1003.1).  Bash can be configured to be POSIX-conformant by de‐
+       fault.
+
+OPTIONS
+       All of the single-character shell options documented in the description of the set builtin command, including -o, can be used as options when the shell is invoked.  In addition, bash interprets the
+       following options when it is invoked:
+
+       -c        If the -c option is present, then commands are read from the first non-option argument command_string.  If there are arguments after the command_string, the first argument is assigned  to
+                 $0 and any remaining arguments are assigned to the positional parameters.  The assignment to $0 sets the name of the shell, which is used in warning and error messages.
+       -i        If the -i option is present, the shell is interactive.
+       -l        Make bash act as if it had been invoked as a login shell (see INVOCATION below).
+       -r        If the -r option is present, the shell becomes restricted (see RESTRICTED SHELL below).
+       -s        If  the  -s  option  is present, or if no arguments remain after option processing, then commands are read from the standard input.  This option allows the positional parameters to be set
+                 when invoking an interactive shell or when reading input through a pipe.
+       -v        Print shell input lines as they are read.
+       -x        Print commands and their arguments as they are executed.
+       -D        A list of all double-quoted strings preceded by $ is printed on the standard output.  These are the strings that are subject to language translation when the current locale is  not  C  or
+                 POSIX.  This implies the -n option; no commands will be executed.
+       [-+]O [shopt_option]
+                 shopt_option is one of the shell options accepted by the shopt builtin (see SHELL BUILTIN COMMANDS below).  If shopt_option is present, -O sets the value of that option; +O unsets it.  If
+                 shopt_option is not supplied, the names and values of the shell options accepted by shopt are printed on the standard output.  If the invocation option is +O, the output is displayed in a
+                 format that may be reused as input.
+       --        A -- signals the end of options and disables further option processing.  Any arguments after the -- are treated as filenames and arguments.  An argument of - is equivalent to --.
+
+       Bash also interprets a number of multi-character options.  These options must appear on the command line before the single-character options to be recognized.
+
+-----Info: (*manpages*)bash, 3660 lines --Top---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+No menu item 'bash' in node '(dir)Top'
+
+
+
+
+job_spec [&]
+What It Means:
+	• job_spec This is a placeholder for a job specification. In many Unix shells, a job refers to a command or group of commands that are running in the background or are suspended. You can refer to a specific job using identifiers like:
+		○ A number (which you might see when running the jobs command),
+		○ A % symbol followed by the job number (e.g., %1), or
+		○ Sometimes even a portion of the command name if the shell supports it.
+	• [&] The square brackets indicate that the ampersand (&) is optional. When you place an ampersand at the end of a command, it instructs the shell to run the command in the background. For example:
+bash
+long_running_command &
+
+In the context of job control, if you see something like job_spec [&], it means that you can specify a job (or a group of jobs) and optionally decide to run it in the background.
+Usage Context:
+	• Job Control Commands: Commands such as fg (foreground) or bg (background) use the concept of a job specification. For instance, if you have several background tasks, you might type:
+bash
+fg %1
+
+to bring job number 1 into the foreground.
+	• Backgrounding Tasks: When starting a long-running task, appending an & lets you continue using the same terminal for other commands while that task runs in the background.
+2. history [-c] [-d offset] [n] or history -anrw [filename] or history -ps arg [arg...]
+What It Means:
+The second command syntax pertains to the history built-in command available in many shells (like Bash). This command is used to display, manipulate, or clear the command history. It comes with several options:
+	• Common Options:
+		○ -c (clear): Clears the entire history list for the current session.
+		○ -d offset (delete): Deletes the history entry at the specified offset (position in the history list).
+		○ [n]: When a number is provided, it tells the shell to display only the last n commands from the history. For example, history 10 shows the most recent 10 commands.
+	• Grouped Options -anrw [filename]:
+These options work together to manage the history file (the file where your command history is stored, usually hidden in your home directory, like ~/.bash_history):
+		○ -a (append): Appends the new history lines (from the current session) to the history file.
+		○ -n (new): Reads any new lines from the history file that have been appended by other sessions.
+		○ -r (read): Reads the history file and appends its contents to the current shell’s history list.
+		○ -w (write): Writes the current history list to the history file, effectively saving your session’s history.
+Combined as history -anrw [filename], you can synchronize your in-memory history with what is stored on disk, and you can optionally specify a particular file.
+	• Option -ps (process substitution):
+		○ -p: This flag tells history to perform history substitution on the provided arguments and display the result. It doesn’t save these results to the history list.
+		○ -s: This option appends the provided arguments as a single new command to the history list.
+When used together (as in history -ps arg [arg...]), it’s often used to both display and record command-line expressions, which can then be later re-executed.
+Usage Context:
+	• Managing Command History: The history command is very useful for reusing commands. You might accidentally repeat a long command; using history, you can recall it quickly.
+	• Clearing Sensitive Data: Using history -c can be useful if you need to clear out potentially sensitive commands before sharing your terminal session.
+	• Synchronizing Multiple Sessions: When working in multiple terminal sessions, combining -a, -n, -r, and -w ensures that each session has an accurate and updated record of commands.
+	• Scripted Command Reuse: The -ps option is particularly handy in scripts where you may want to process a command or preview its substitution before adding it to your history.
+In summary, the syntax examples in the image cover:
+	• Job Control: Using job_spec [&] to reference jobs and optionally run them in the background.
+	• History Management: Offering various ways to display, modify, clear, and synchronize your command history with options like -c, -d, [n], -anrw, and -ps.
+
+The asterisk (*) in Linux commands is a wildcard character used for pattern matching—often called "globbing." The shell expands * to match any number (including zero) of characters in file and directory names. Here’s how it works and how you can use it:
+Basic Usage
+	• List Files:
+bash
+ls *.txt
+
+This command lists all files in the current directory that end with .txt. The * matches any filename that has anything before the .txt.
+	• Remove Files:
+bash
+rm file*
+
+This removes any file whose name starts with "file." For example, file1, file_backup, or even just file itself.
+	• Copy or Move Files:
+bash
+cp /source/* /destination/
+
+This command copies all files from the /source directory into the /destination directory.
+How It Works
+	• Pattern Matching: The * is interpreted by your shell (like Bash) before the command is executed. It checks the file system for names that fit the pattern.
+		○ For example, *abc* will match any file that has "abc" anywhere in its name.
+	• Zero or More Characters: The asterisk is versatile because it will match even if there are no characters where it is placed. For instance, ls a* will match a, apple, and a.txt.
+	• Combining with Other Characters: You can combine * with literal characters.
+		○ Example: ls report-*.pdf This will list all PDF files that start with report-.
+Important Considerations
+	• Shell Expansion: Remember that the wildcard expansion is done by the shell. If you want the asterisk to be treated as a literal character (for example, in a script or a command argument), you need to quote it (e.g., using '*').
+	• Be Cautious: Using * in commands like rm or mv can be powerful and dangerous if not used carefully because it might match more files than you intend.
+The * wildcard is an essential tool that makes it easy to manage batches of files, automate tasks, and work efficiently in the Linux command line. If you’d like more examples or have any further question
+
+diffrence between find and grep command
+The find and grep commands in Linux are both used to search for data, but they serve different purposes and operate in distinct ways:
+find Command
+	• Purpose: Searches for files and directories in a directory hierarchy based on criteria like name, size, type, permissions, modification time, etc.
+	• Usage: For locating files or folders.
+	• Example:
+bash
+find /home -name "file.txt"
+
+This searches for a file named file.txt in the /home directory.
+	• Key Features:
+		○ Can execute actions on the found items (e.g., delete them).
+		○ Supports advanced criteria like time or size-based searches.
+grep Command
+	• Purpose: Searches for patterns within the content of files using regular expressions.
+	• Usage: For locating specific lines of text within files.
+	• Example:
+bash
+grep "error" logfile.txt
+
+This searches for occurrences of the word error within logfile.txt.
+	• Key Features:
+		○ Supports regular expressions for pattern matching.
+		○ Can be used with pipelines to filter output.
+Comparison
+Feature	find	grep
+Scope	Files and directories	Content of files
+Search Criteria	File attributes (name, size, etc.)	Text patterns (regex support)
+Output	Path of files/directories	Matching lines of text
+To summarize:
+	• Use find to locate files or directories based on attributes.
+	• Use grep to find specific text or patterns within files.
+Would you like examples of how to combine them? They can work together 
+
+In Ubuntu (and other Unix-like systems), ./ is used to indicate that you're referencing or executing something in the current directory.
+What It Does
+	• Execute a File: When ./ is followed by a filename, it tells the shell to execute that file from the current directory. Example:
+bash
+./script.sh
+
+This runs the script.sh file located in the current directory.
+	• Path Reference: ./ simply points to the current directory. For example, if you use:
+bash
+./file.txt
+
+It specifies the file.txt located in the current directory.
+Why Use ./?
+When you're running a script or program, the shell may not automatically search the current directory unless it's explicitly included in the $PATH. Using ./ ensures you're executing the file from the current directory.
+
